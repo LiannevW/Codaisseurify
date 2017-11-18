@@ -15,4 +15,4 @@
   <p>This artist did not produce songs.</p>
 <% end %>
 
-  <%= link_to "Add new song", new_artist_song_path(@artist) %>
+  <%= render "songs/form", artists: @artists%>

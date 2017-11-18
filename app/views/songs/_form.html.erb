@@ -1,6 +1,6 @@
 <h1>Add a new song to your favorite artist!</h1>
 
-<%= form_for [@artist, @song] do |f| %>
+<%= form_for [@artist, @artist.songs.new] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
