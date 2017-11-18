@@ -14,7 +14,7 @@ RSpec.describe Song, type: :model do
     let(:song) { create :song }
 
     it "belongs to a artist" do
-      song = artist.songs.build(name: "")
+      song = artist.songs.build
 
       expect(song.artist). to eq(artist)
   end
