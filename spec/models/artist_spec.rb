@@ -23,7 +23,7 @@ RSpec.describe Artist, type: :model do
   end
 
   describe "association with song" do
-    let(:artist) { create :artist, image: "aaa"  }
+    let(:artist) { create :artist }
     let!(:song) { create :song, artist: artist }
 
     it "has many songs" do
