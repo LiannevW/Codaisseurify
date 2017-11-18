@@ -22,4 +22,6 @@ function createSong(name) {
     console.log(data);
 
 //Dit triggert submitSong als form gesubmit wordt
+$(document).ready(function() {
 $("form").bind('submit', submitSong);
+});
