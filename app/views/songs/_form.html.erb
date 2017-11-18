@@ -2,7 +2,9 @@
 
 <%= form_for [@artist, @artist.songs.new] do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: "Please enter name", id: "new-song-name"%>
 
-  <%= f.submit "Create" %>
+<div id="<%= @artist.id %>">
+  <%= f.submit "Add song", id: "add-new-song" %>
+</div>
 <% end %>
