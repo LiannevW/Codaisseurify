@@ -7,6 +7,7 @@ end
 
 ruby '2.4.1'
 
+gem 'jquery-rails'
 gem'carrierwave', '0.11.2'
 gem 'cloudinary', '1.2.3'
 gem 'rails', '~> 5.1.4'
@@ -17,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'turbolinks'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
