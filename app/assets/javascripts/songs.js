@@ -10,20 +10,19 @@ function submitSong(event) {
 function createSong(name) {
   var newSong = { name: name };
   var artistId = $("#add-new-song").parent().attr('id');
-  debugger;
 
   $.ajax({
     type: "POST",
-    url: "/artists/" + artistId,
+    url: "/artists/" + artistId + "/songs.json",
     data: JSON.stringify({
       song: newSong
     }),
     contentType: "application/json",
     dataType: "json"
   })
-  .done(function(data) {
-      console.log(data);
-      $("#songlist").add("<li>" + data.name + "<a href='#' id='delete-one-song'>[Delete song via Ajax]</a></li>");
+  .done(function() {
+      console.log();
+      $("#songlist").append("<li>" + name + "<a href='#' id='delete-one-song'>[Delete song via Ajax]</a></li>");
     });
 }
 
