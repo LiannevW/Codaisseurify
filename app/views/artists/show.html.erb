@@ -4,15 +4,17 @@
 <h4>All songs!</h4>
 
 <% if @artist.songs.any? %>
-  <ul>
+  <ul id="songlist">
     <% @artist.songs.each do |song| %>
-      <li><%= song.name %></li>
+      <li ><%= song.name %></li>
           <%= link_to "[Delete song!]", artist_song_path(@artist, song), method: :delete, data: { confirm: "Are you sure? Do you really want to delete this song?" } %>
-
+          <a href="#" id="delete-one-song">[Delete song via Ajax]</a>
     <% end %>
   </ul>
 <% else %>
   <p>This artist did not produce songs.</p>
 <% end %>
+
+<a href="#" id="delete-all">[Delete all songs of this artist via Ajax]</a>
 
   <%= render "songs/form", artists: @artists%>
