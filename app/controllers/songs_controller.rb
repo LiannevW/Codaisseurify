@@ -12,17 +12,19 @@ class SongsController < ApplicationController
      @artist = Artist.find(params[:artist_id])
      @song = @artist.songs.new(song_params)
 
-#Error is still undefined..
+=begin
     respond_to do |format|
      if @song.save
        format.html { redirect_to artist_path(@artist), notice: "New song successfully added." }
-       format.json { render :show, status: :created, location: @artist }
+       format.json { render :artistindex, status: :created, location: @artist }
      else
        format.html { redirect_to root_path }
-       format.json { ender json: @song.errors, status: :unprocessable_entity }
+       format.json { render json: @song.errors, status: :unprocessable_entity }
      end
    end
+=end
  end
+
 
   def destroy
     @artist = Artist.find(params[:artist_id])

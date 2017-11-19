@@ -8,7 +8,10 @@ let(:artist) { create :artist }
   scenario 'add a new song' do
     visit artist_path(artist.id)
     fill_in 'new-song-name', with: 'St. Matthew Passion'
-    page.execute_script("$('form').submit()")
+    click_button('Add song ajax')
+
+    sleep(1)
+
     expect(page).to have_content('St. Matthew Passion')
   end
 
