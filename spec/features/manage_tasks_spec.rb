@@ -21,7 +21,7 @@ let(:artist) { create :artist }
 
       sleep(1)
 
-      click_link('[Delete song!]')
+      click_link('[Delete song via Ajax]')
       expect(page).not_to have_content('St. Matthew Passion')
     end
 
@@ -33,7 +33,7 @@ let(:artist) { create :artist }
 
       sleep(1)
 
-      click_link('[Delete all songs!]')
+      click_link('[Delete all songs of this artist via Ajax]')
       expect(page).not_to have_content('St. Matthew Passion', 'Ave Maria')
       end
 
