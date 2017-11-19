@@ -29,7 +29,7 @@ let(:artist) { create :artist }
     end
 
 #Didn't test this. Need to add a 'delete all songs button first'
-  scenario 'delete all songs of aratist' do
+  scenario 'delete all songs of artist' do
       visit artist_path(artist.id)
       fill_in 'new-song-name', with: 'St. Matthew Passion'
       fill_in 'new-song-name', with: 'Ave Maria'
