@@ -1,28 +1,38 @@
 //add a Song
 function submitSong(event) {
-  event.preventDefault();
+
+  //sevent.preventDefault();
   var name = $("#new-song-name").val();
   createSong(name);
   $("#new-song-name").val(null);
 }
 
 function createSong(name) {
-  var newSong = { name: name, completed: false };};
+  var newSong = { name: name };
   var artistId = $("#add-new-song").parent().attr('id');
+  debugger;
 
   $.ajax({
     type: "POST",
-    url: "/artists/" + artistId + ".json",
+    url: "/artists/" + artistId,
     data: JSON.stringify({
-    song: newSong
+      song: newSong
     }),
     contentType: "application/json",
     dataType: "json"
-
+  })
   .done(function(data) {
-    console.log(data);
-  }
+      console.log(data);
+      $("#songlist").add("<li>" + data.name + "<a href='#' id='delete-one-song'>[Delete song via Ajax]</a></li>");
+    });
+}
 
+
+
+
+
+
+/*
   var listItem = $("<li></li>");
   listItem.addClass("song");
 
@@ -45,10 +55,11 @@ function deleteSong(songId) {
     type: "DELETE",
     url: "/artists/" + artistId + "/songs/" + songId + ".json",
     contentType: "application/json",
-    dataType: "json"})
+    dataType: "json"
+  })
+      .done(function(data) {
+      console.log(data);
     });
-    .done(function(data) {
-    console.log(data);
 }
 
 //Delete all songs of artist
@@ -65,10 +76,10 @@ function removeAllSongsOfArtist() {
         .done(function(data) {
         console.log(data);
 }
+*/
 
-//Dit triggert submitSong als form gesubmit wordt
 $(document).ready(function() {
-$(".form_class").bind('submit', submitSong);
-$("#delete-one-song").bind('click', removeSong);
-$("#delete-all").bind('click', removeAllSongsOfArtist);
+  console.log("kjhjlhg");
+  //$("#delete-one-song").bind('click', removeSong);
+  //$("#delete-all").bind('click', removeAllSongsOfArtist);
 });

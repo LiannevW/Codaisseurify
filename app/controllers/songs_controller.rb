@@ -1,9 +1,11 @@
 class SongsController < ApplicationController
 
+=begin
   def new
     @artist = Artist.find(params[:artist_id])
     @song = @artist.songs.build
   end
+=end
 
   def create
      song_params = params.require(:song).permit(:name)
