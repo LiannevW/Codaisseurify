@@ -5,6 +5,6 @@
   <%= f.text_field :name, placeholder: "Please enter name", id: "new-song-name"%>
 
 <div id="<%= @artist.id %>">
-  <%= f.submit "Add song", id: "add-new-song" %>
+  <button type="button" id="add-new-song" onclick="submitSong()">Add song ajax</button>
 </div>
 <% end %>
