@@ -2,14 +2,20 @@
 function submitSong(event) {
 
   //sevent.preventDefault();
+debugger;
   var name = $("#new-song-name").val();
   createSong(name);
   $("#new-song-name").val(null);
 }
 
+function getArtistId() {
+  return $("#add-new-song").parent().attr('id');
+}
+
+
 function createSong(name) {
   var newSong = { name: name };
-  var artistId = $("#add-new-song").parent().attr('id');
+  var artistId = getArtistId();
 
   $.ajax({
     type: "POST",
@@ -26,59 +32,37 @@ function createSong(name) {
     });
 }
 
-
-
-
-
-
-/*
-  var listItem = $("<li></li>");
-  listItem.addClass("song");
-
-  $("#songlist").prepend( listItem );
-  })
-
 //Delete a song
-function removeSong(event) {
-  event.preventDefault();
-
-    $listItem = $(listItem);
-    songId = $(songItem).data('id');
-    deleteSong(songId);
-    $listItem.remove();
-  });
+function removeSong(event, songId) {
+  debugger;
+  $("#songlist").find("#" + songId).remove();
+  var artistId = getArtistId();
+  deleteSong(artistId, songId);
 }
 
-function deleteSong(songId) {
+function deleteSong(artistId, songId) {
   $.ajax({
     type: "DELETE",
     url: "/artists/" + artistId + "/songs/" + songId + ".json",
     contentType: "application/json",
     dataType: "json"
   })
-      .done(function(data) {
-      console.log(data);
-    });
+    .done(function(data) {
+    console.log(data);
+  });
 }
 
-//Delete all songs of artist
-function removeAllSongsOfArtist() {
-    event.preventDefault();
-    var songId = //??Dit zijn alle songs bij artistId
-    var artistId = $("#add-new-song").parent().attr('id');
-    $.ajax({
-          type: "DELETE",
-          url: "/artists/" + artistId + "/songs/" + songId + ".json",
-          contentType: "application/json",
-          dataType: "json"
-        })
-        .done(function(data) {
-        console.log(data);
+function deleteAllSongs() {
+
+  $.each($("#songlist").children(), function(index, listItem) {
+      removeSong(0, listItem.id)
+      debugger;
+
+  });
 }
-*/
+
 
 $(document).ready(function() {
-  console.log("kjhjlhg");
-  //$("#delete-one-song").bind('click', removeSong);
+  console.log("test:is this working?");
   //$("#delete-all").bind('click', removeAllSongsOfArtist);
 });
