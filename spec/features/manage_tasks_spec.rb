@@ -20,7 +20,7 @@ let(:artist) { create :artist }
   scenario 'delete an old song' do
       visit artist_path(artist.id)
       fill_in 'new-song-name', with: 'St. Matthew Passion'
-      page.execute_script("$('form').submit()")
+      click_button('Add song ajax')
 
       sleep(1)
 
@@ -32,7 +32,9 @@ let(:artist) { create :artist }
   scenario 'delete all songs of artist' do
       visit artist_path(artist.id)
       fill_in 'new-song-name', with: 'St. Matthew Passion'
+      click_button('Add song ajax')
       fill_in 'new-song-name', with: 'Ave Maria'
+      click_button('Add song ajax')
 
       sleep(1)
 
