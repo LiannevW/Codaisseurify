@@ -15,7 +15,6 @@ class SongsController < ApplicationController
     @song = @artist.songs.build
   end
 
-
   def create
      song_params = params.require(:song).permit(:name)
      @artist = Artist.find(params[:artist_id])
@@ -42,5 +41,5 @@ class SongsController < ApplicationController
       format.json { render json: @artist }
     end
   end
-
+end
 end

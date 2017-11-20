@@ -1,7 +1,6 @@
 //add a Song
-function submitSong(event) {
-
-  //sevent.preventDefault();
+function submitSong() {
+  //event.preventDefault();
 debugger;
   var name = $("#new-song-name").val();
   createSong(name);
@@ -9,7 +8,8 @@ debugger;
 }
 
 function getArtistId() {
-  return $("#add-new-song").parent().attr('id');
+   var intoString = $("#add-new-song").parent().attr('id');
+   return parseInt(intoString);
 }
 
 
@@ -27,7 +27,7 @@ function createSong(name) {
     dataType: "json"
   })
   .done(function() {
-      $("#songlist").append("<li>" + name + "<a href='#' id='delete-one-song'>[Delete song via Ajax]</a></li>");
+      $("#songlist").append("<li>" + name + "<a href='#' onclick='removeSong(0, <%= song.id %>)' id='delete-one-song'>[Delete song via Ajax]</a></li>");
     });
 }
 
@@ -51,17 +51,12 @@ function deleteSong(artistId, songId) {
   });
 }
 
-function deleteAllSongs() {
-
+function deleteAllSongs(event) {
+  debugger;
   $.each($("#songlist").children(), function(index, listItem) {
+      debugger;
       removeSong(0, listItem.id)
       debugger;
 
   });
 }
-
-/* Don't think I need this anymore..
-$(document).ready(function() {
-  console.log("test:is this working?");
-  //$("#delete-all").bind('click', removeAllSongsOfArtist);
-});
