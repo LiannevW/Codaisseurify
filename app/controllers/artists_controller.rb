@@ -6,6 +6,13 @@ end
 
 def show
   @artist = Artist.find(params[:id])
+  @song = @artist.songs
+  @song = Song.new
+
+  respond_to do |format|
+    format.html { render :show }
+    format.json { render json: @artist }
+  end
 end
 
 def destroy

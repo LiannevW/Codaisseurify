@@ -60,7 +60,7 @@ function deleteAllSongs() {
   });
 }
 
-
+/* Don't think I need this anymore..
 $(document).ready(function() {
   console.log("test:is this working?");
   //$("#delete-all").bind('click', removeAllSongsOfArtist);
