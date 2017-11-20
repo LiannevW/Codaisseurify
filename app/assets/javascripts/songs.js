@@ -27,7 +27,6 @@ function createSong(name) {
     dataType: "json"
   })
   .done(function() {
-      console.log();
       $("#songlist").append("<li>" + name + "<a href='#' id='delete-one-song'>[Delete song via Ajax]</a></li>");
     });
 }
